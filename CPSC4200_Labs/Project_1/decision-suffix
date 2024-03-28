@@ -1,0 +1,8 @@
+
+"""
+import urllib.parse
+q = urllib.parse.quote(blob)
+if len(q) == 445:
+    print("Use SHA-256 instead!")
+else:
+    print("MD5 is perfectly secure!")

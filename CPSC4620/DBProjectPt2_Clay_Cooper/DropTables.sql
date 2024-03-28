@@ -1,0 +1,18 @@
+/*
+    Zach Clay and Ashlyn Cooper
+*/
+
+USE PizzasRUs;
+
+DROP TABLE IF EXISTS dineIn;
+DROP TABLE IF EXISTS pickup;
+DROP TABLE IF EXISTS delivery;
+DROP TABLE IF EXISTS pizzaTopping;
+DROP TABLE IF EXISTS topping;
+DROP TABLE IF EXISTS discountToPizza;
+DROP TABLE IF EXISTS discountToOrder;
+DROP TABLE IF EXISTS discount;
+DROP TABLE IF EXISTS pizza;
+DROP TABLE IF EXISTS basePriceCost;
+DROP TABLE IF EXISTS pizzaOrder;
+DROP TABLE IF EXISTS customer;

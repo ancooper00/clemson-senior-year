@@ -1,0 +1,117 @@
+reading words in octal from stdin:
+  0012700
+  0000022
+  0012701
+  0000004
+  0010120
+  0162701
+  0000001
+  0001374
+  0000000
+
+instruction trace:
+at 00000, mov instruction sm 2, sr 7 dm 0 dr 0
+  src.value = 0000022
+  nzvc bits = 4'b0000
+  R0:0000022  R2:0000000  R4:0000000  R6:0000000
+  R1:0000000  R3:0000000  R5:0000000  R7:0000004
+at 00004, mov instruction sm 2, sr 7 dm 0 dr 1
+  src.value = 0000004
+  nzvc bits = 4'b0000
+  R0:0000022  R2:0000000  R4:0000000  R6:0000000
+  R1:0000004  R3:0000000  R5:0000000  R7:0000010
+at 00010, mov instruction sm 0, sr 1 dm 2 dr 0
+  src.value = 0000004
+  nzvc bits = 4'b0000
+  value 0000004 is written to 0000022
+  R0:0000024  R2:0000000  R4:0000000  R6:0000000
+  R1:0000004  R3:0000000  R5:0000000  R7:0000012
+at 00012, sub instruction sm 2, sr 7 dm 0 dr 1
+  src.value = 0000001
+  dst.value = 0000004
+  result    = 0000003
+  nzvc bits = 4'b0000
+  R0:0000024  R2:0000000  R4:0000000  R6:0000000
+  R1:0000003  R3:0000000  R5:0000000  R7:0000016
+at 00016, bne instruction with offset 0374
+  R0:0000024  R2:0000000  R4:0000000  R6:0000000
+  R1:0000003  R3:0000000  R5:0000000  R7:0000010
+at 00010, mov instruction sm 0, sr 1 dm 2 dr 0
+  src.value = 0000003
+  nzvc bits = 4'b0000
+  value 0000003 is written to 0000024
+  R0:0000026  R2:0000000  R4:0000000  R6:0000000
+  R1:0000003  R3:0000000  R5:0000000  R7:0000012
+at 00012, sub instruction sm 2, sr 7 dm 0 dr 1
+  src.value = 0000001
+  dst.value = 0000003
+  result    = 0000002
+  nzvc bits = 4'b0000
+  R0:0000026  R2:0000000  R4:0000000  R6:0000000
+  R1:0000002  R3:0000000  R5:0000000  R7:0000016
+at 00016, bne instruction with offset 0374
+  R0:0000026  R2:0000000  R4:0000000  R6:0000000
+  R1:0000002  R3:0000000  R5:0000000  R7:0000010
+at 00010, mov instruction sm 0, sr 1 dm 2 dr 0
+  src.value = 0000002
+  nzvc bits = 4'b0000
+  value 0000002 is written to 0000026
+  R0:0000030  R2:0000000  R4:0000000  R6:0000000
+  R1:0000002  R3:0000000  R5:0000000  R7:0000012
+at 00012, sub instruction sm 2, sr 7 dm 0 dr 1
+  src.value = 0000001
+  dst.value = 0000002
+  result    = 0000001
+  nzvc bits = 4'b0000
+  R0:0000030  R2:0000000  R4:0000000  R6:0000000
+  R1:0000001  R3:0000000  R5:0000000  R7:0000016
+at 00016, bne instruction with offset 0374
+  R0:0000030  R2:0000000  R4:0000000  R6:0000000
+  R1:0000001  R3:0000000  R5:0000000  R7:0000010
+at 00010, mov instruction sm 0, sr 1 dm 2 dr 0
+  src.value = 0000001
+  nzvc bits = 4'b0000
+  value 0000001 is written to 0000030
+  R0:0000032  R2:0000000  R4:0000000  R6:0000000
+  R1:0000001  R3:0000000  R5:0000000  R7:0000012
+at 00012, sub instruction sm 2, sr 7 dm 0 dr 1
+  src.value = 0000001
+  dst.value = 0000001
+  result    = 0000000
+  nzvc bits = 4'b0100
+  R0:0000032  R2:0000000  R4:0000000  R6:0000000
+  R1:0000000  R3:0000000  R5:0000000  R7:0000016
+at 00016, bne instruction with offset 0374
+  R0:0000032  R2:0000000  R4:0000000  R6:0000000
+  R1:0000000  R3:0000000  R5:0000000  R7:0000020
+at 00020, halt instruction
+
+execution statistics (in decimal):
+  instructions executed     = 15
+  instruction words fetched = 21
+  data words read           = 0
+  data words written        = 4
+  branches executed         = 4
+  branches taken            = 3 (75.0%)
+
+first 20 words of memory after execution halts:
+  00000: 012700
+  00002: 000022
+  00004: 012701
+  00006: 000004
+  00010: 010120
+  00012: 162701
+  00014: 000001
+  00016: 001374
+  00020: 000000
+  00022: 000004
+  00024: 000003
+  00026: 000002
+  00030: 000001
+  00032: 000000
+  00034: 000000
+  00036: 000000
+  00040: 000000
+  00042: 000000
+  00044: 000000
+  00046: 000000

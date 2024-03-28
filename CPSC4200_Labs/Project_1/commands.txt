@@ -1,0 +1,29 @@
+﻿docker build -t cpsc_4200_project_1 .devcontainer
+docker run -v %cd%:/work -w /work -it cpsc_4200_project_1
+
+
+xxd -r -p file1.hex > file1.bin
+xxd -r -p file2.hex > file2.bin
+
+openssl dgst -md5 file1.bin file2.bin
+openssl dgst -sha256 file1.bin file2.bin
+
+time fastcoll -o fc-file1 fc-file2
+xxd -p fc-file1
+xxd -p fc-file2
+
+fastcoll -p prefix -o col1 col2
+cat col1 suffix > file1.py; cat col2 suffix > file2.py
+
+openssl dgst -md5 file1.py file2.py
+openssl dgst -sha256 file1.py file2.py
+
+chmod +x file1.py file2.py
+
+fastcoll -p prefix -o col1 col2
+cat col1 decision-suffix > good.py; cat col2 decision-suffix > evil.py
+
+chmod +x evil.py good.py
+
+openssl dgst -md5 evil.py good.py
+openssl dgst -sha256 evil.py good.py

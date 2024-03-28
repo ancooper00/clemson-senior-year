@@ -1,0 +1,112 @@
+reading words in octal from stdin:
+  0012700
+  0000004
+  0010001
+  0010002
+  0020001
+  0000401
+  0000000
+  0001401
+  0000000
+  0001001
+  0077101
+  0020102
+  0020201
+  0001001
+  0000000
+  0000000
+
+instruction trace:
+at 00000, mov instruction sm 2, sr 7 dm 0 dr 0
+  src.value = 0000004
+  nzvc bits = 4'b0000
+  R0:0000004  R2:0000000  R4:0000000  R6:0000000
+  R1:0000000  R3:0000000  R5:0000000  R7:0000004
+at 00004, mov instruction sm 0, sr 0 dm 0 dr 1
+  src.value = 0000004
+  nzvc bits = 4'b0000
+  R0:0000004  R2:0000000  R4:0000000  R6:0000000
+  R1:0000004  R3:0000000  R5:0000000  R7:0000006
+at 00006, mov instruction sm 0, sr 0 dm 0 dr 2
+  src.value = 0000004
+  nzvc bits = 4'b0000
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000004  R3:0000000  R5:0000000  R7:0000010
+at 00010, cmp instruction sm 0, sr 0 dm 0 dr 1
+  src.value = 0000004
+  dst.value = 0000004
+  result    = 0000000
+  nzvc bits = 4'b0100
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000004  R3:0000000  R5:0000000  R7:0000012
+at 00012, br instruction with offset 0001
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000004  R3:0000000  R5:0000000  R7:0000016
+at 00016, beq instruction with offset 0001
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000004  R3:0000000  R5:0000000  R7:0000022
+at 00022, bne instruction with offset 0001
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000004  R3:0000000  R5:0000000  R7:0000024
+at 00024, sob instruction reg 1 with offset 001
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000003  R3:0000000  R5:0000000  R7:0000024
+at 00024, sob instruction reg 1 with offset 001
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000002  R3:0000000  R5:0000000  R7:0000024
+at 00024, sob instruction reg 1 with offset 001
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000001  R3:0000000  R5:0000000  R7:0000024
+at 00024, sob instruction reg 1 with offset 001
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000000  R3:0000000  R5:0000000  R7:0000026
+at 00026, cmp instruction sm 0, sr 1 dm 0 dr 2
+  src.value = 0000000
+  dst.value = 0000004
+  result    = 0177774
+  nzvc bits = 4'b1001
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000000  R3:0000000  R5:0000000  R7:0000030
+at 00030, cmp instruction sm 0, sr 2 dm 0 dr 1
+  src.value = 0000004
+  dst.value = 0000000
+  result    = 0000004
+  nzvc bits = 4'b0000
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000000  R3:0000000  R5:0000000  R7:0000032
+at 00032, bne instruction with offset 0001
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000000  R3:0000000  R5:0000000  R7:0000036
+at 00036, halt instruction
+  R0:0000004  R2:0000004  R4:0000000  R6:0000000
+  R1:0000000  R3:0000000  R5:0000000  R7:0000040
+
+execution statistics (in decimal):
+  instructions executed     = 18
+  instruction words fetched = 13
+  data words read           = 0
+  data words written        = 0
+  branches executed         = 8
+  branches taken            = 6 (75.0%)
+
+first 20 words of memory after execution halts:
+  00000: 012700
+  00002: 000004
+  00004: 010001
+  00006: 010002
+  00010: 020001
+  00012: 000401
+  00014: 000000
+  00016: 001401
+  00020: 000000
+  00022: 001001
+  00024: 077101
+  00026: 020102
+  00030: 020201
+  00032: 001001
+  00034: 000000
+  00036: 000000
+  00040: 000000
+  00042: 000000
+  00044: 000000
+  00046: 000000

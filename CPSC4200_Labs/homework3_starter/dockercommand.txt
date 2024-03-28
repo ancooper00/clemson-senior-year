@@ -1,0 +1,1 @@
+docker run --rm -v $PWD:/work -w /work -p 5800:5800 -p 5900:5900 -it 78dd89b09e6b4c2c36d34ea25a512002a0a5bed741aa3bf7a0c6255b4c730314

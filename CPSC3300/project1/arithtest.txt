@@ -1,0 +1,176 @@
+reading words in octal from stdin:
+  0012700
+  0100101
+  0010001
+  0012702
+  0040101
+  0006300
+  0006300
+  0006201
+  0006201
+  0006302
+  0006202
+  0006302
+  0006202
+  0006202
+  0006202
+  0062703
+  0177777
+  0162704
+  0000001
+  0060303
+  0160404
+  0062705
+  0077777
+  0060505
+  0000000
+
+instruction trace:
+at 00000, mov instruction sm 2, sr 7 dm 0 dr 0
+  src.value = 0100101
+  nzvc bits = 4'b1000
+  R0:0100101  R2:0000000  R4:0000000  R6:0000000
+  R1:0000000  R3:0000000  R5:0000000  R7:0000004
+at 00004, mov instruction sm 0, sr 0 dm 0 dr 1
+  src.value = 0100101
+  nzvc bits = 4'b1000
+  R0:0100101  R2:0000000  R4:0000000  R6:0000000
+  R1:0100101  R3:0000000  R5:0000000  R7:0000006
+at 00006, mov instruction sm 2, sr 7 dm 0 dr 2
+  src.value = 0040101
+  nzvc bits = 4'b0000
+  R0:0100101  R2:0040101  R4:0000000  R6:0000000
+  R1:0100101  R3:0000000  R5:0000000  R7:0000012
+at 00012, asl instruction dm 0 dr 0
+  dst.value = 0100101
+  result    = 0000202
+  nzvc bits = 4'b0011
+  R0:0000202  R2:0040101  R4:0000000  R6:0000000
+  R1:0100101  R3:0000000  R5:0000000  R7:0000014
+at 00014, asl instruction dm 0 dr 0
+  dst.value = 0000202
+  result    = 0000404
+  nzvc bits = 4'b0000
+  R0:0000404  R2:0040101  R4:0000000  R6:0000000
+  R1:0100101  R3:0000000  R5:0000000  R7:0000016
+at 00016, asr instruction dm 0 dr 1
+  dst.value = 0100101
+  result    = 0140040
+  nzvc bits = 4'b1001
+  R0:0000404  R2:0040101  R4:0000000  R6:0000000
+  R1:0140040  R3:0000000  R5:0000000  R7:0000020
+at 00020, asr instruction dm 0 dr 1
+  dst.value = 0140040
+  result    = 0160020
+  nzvc bits = 4'b1010
+  R0:0000404  R2:0040101  R4:0000000  R6:0000000
+  R1:0160020  R3:0000000  R5:0000000  R7:0000022
+at 00022, asl instruction dm 0 dr 2
+  dst.value = 0040101
+  result    = 0100202
+  nzvc bits = 4'b1010
+  R0:0000404  R2:0100202  R4:0000000  R6:0000000
+  R1:0160020  R3:0000000  R5:0000000  R7:0000024
+at 00024, asr instruction dm 0 dr 2
+  dst.value = 0100202
+  result    = 0140101
+  nzvc bits = 4'b1010
+  R0:0000404  R2:0140101  R4:0000000  R6:0000000
+  R1:0160020  R3:0000000  R5:0000000  R7:0000026
+at 00026, asl instruction dm 0 dr 2
+  dst.value = 0140101
+  result    = 0100202
+  nzvc bits = 4'b1001
+  R0:0000404  R2:0100202  R4:0000000  R6:0000000
+  R1:0160020  R3:0000000  R5:0000000  R7:0000030
+at 00030, asr instruction dm 0 dr 2
+  dst.value = 0100202
+  result    = 0140101
+  nzvc bits = 4'b1010
+  R0:0000404  R2:0140101  R4:0000000  R6:0000000
+  R1:0160020  R3:0000000  R5:0000000  R7:0000032
+at 00032, asr instruction dm 0 dr 2
+  dst.value = 0140101
+  result    = 0160040
+  nzvc bits = 4'b1001
+  R0:0000404  R2:0160040  R4:0000000  R6:0000000
+  R1:0160020  R3:0000000  R5:0000000  R7:0000034
+at 00034, asr instruction dm 0 dr 2
+  dst.value = 0160040
+  result    = 0170020
+  nzvc bits = 4'b1010
+  R0:0000404  R2:0170020  R4:0000000  R6:0000000
+  R1:0160020  R3:0000000  R5:0000000  R7:0000036
+at 00036, add instruction sm 2, sr 7 dm 0 dr 3
+  src.value = 0177777
+  dst.value = 0000000
+  result    = 0177777
+  nzvc bits = 4'b1000
+  R0:0000404  R2:0170020  R4:0000000  R6:0000000
+  R1:0160020  R3:0177777  R5:0000000  R7:0000042
+at 00042, sub instruction sm 2, sr 7 dm 0 dr 4
+  src.value = 0000001
+  dst.value = 0000000
+  result    = 0177777
+  nzvc bits = 4'b1001
+  R0:0000404  R2:0170020  R4:0177777  R6:0000000
+  R1:0160020  R3:0177777  R5:0000000  R7:0000046
+at 00046, add instruction sm 0, sr 3 dm 0 dr 3
+  src.value = 0177777
+  dst.value = 0177777
+  result    = 0177776
+  nzvc bits = 4'b1001
+  R0:0000404  R2:0170020  R4:0177777  R6:0000000
+  R1:0160020  R3:0177776  R5:0000000  R7:0000050
+at 00050, sub instruction sm 0, sr 4 dm 0 dr 4
+  src.value = 0177777
+  dst.value = 0177777
+  result    = 0000000
+  nzvc bits = 4'b0100
+  R0:0000404  R2:0170020  R4:0000000  R6:0000000
+  R1:0160020  R3:0177776  R5:0000000  R7:0000052
+at 00052, add instruction sm 2, sr 7 dm 0 dr 5
+  src.value = 0077777
+  dst.value = 0000000
+  result    = 0077777
+  nzvc bits = 4'b0000
+  R0:0000404  R2:0170020  R4:0000000  R6:0000000
+  R1:0160020  R3:0177776  R5:0077777  R7:0000056
+at 00056, add instruction sm 0, sr 5 dm 0 dr 5
+  src.value = 0077777
+  dst.value = 0077777
+  result    = 0177776
+  nzvc bits = 4'b1010
+  R0:0000404  R2:0170020  R4:0000000  R6:0000000
+  R1:0160020  R3:0177776  R5:0177776  R7:0000060
+at 00060, halt instruction
+
+execution statistics (in decimal):
+  instructions executed     = 20
+  instruction words fetched = 25
+  data words read           = 0
+  data words written        = 0
+  branches executed         = 0
+  branches taken            = 0
+
+first 20 words of memory after execution halts:
+  00000: 012700
+  00002: 100101
+  00004: 010001
+  00006: 012702
+  00010: 040101
+  00012: 006300
+  00014: 006300
+  00016: 006201
+  00020: 006201
+  00022: 006302
+  00024: 006202
+  00026: 006302
+  00030: 006202
+  00032: 006202
+  00034: 006202
+  00036: 062703
+  00040: 177777
+  00042: 162704
+  00044: 000001
+  00046: 060303
